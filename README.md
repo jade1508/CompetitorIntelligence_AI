@@ -105,7 +105,9 @@ Connected directly to the Google Sheets logs, with four views:
 - **Alert Log** - record of every price-alert email triggered, for tracking how often the team was notified
 
 <img width="1754" height="478" alt="image" src="https://github.com/user-attachments/assets/ccf73b79-c287-4a53-b23e-5eb525e76508" />
-<img width="902" height="788" alt="image" src="https://github.com/user-attachments/assets/efc335d8-4cf2-4e3e-9965-a1a8bba9cbd3" />
+
+<img width="961" height="841" alt="image" src="https://github.com/user-attachments/assets/66850b6d-7024-4551-8c6a-484524423b35" />
+
 
 ## 📊 Data Source
 
