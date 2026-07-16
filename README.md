@@ -105,7 +105,7 @@ Connected directly to the Google Sheets logs, with four views:
 
 [Link to the dataset and worksheet](https://docs.google.com/spreadsheets/d/1xodmOzqchXXoG1g2VBcTHJbF5DQbZohrFqMortnskeQ/edit?usp=sharing) 
 
-## 🚀 Setup
+## ⚙️ Setup
 
 1. Import both Make scenarios (Scraper + Price Comparison).
 2. Connect Google Sheets and point each module at your own spreadsheet (`competitor_urls`, `market_intelligence_log`, `source_product`, `price_compare_log`).
@@ -118,10 +118,11 @@ Connected directly to the Google Sheets logs, with four views:
 
 The current setup utilizes a fixed benchmark dataset (`source_product`) as a baseline for price matching and gap detection. To further scale this intelligence pipeline into an enterprise-grade solution, the architecture is designed to support the following enhancements:
 
-* **Data Lake Integration for Historical Pricing:**
+* **❄️ Data Lake & Business Context Integration for Historical Benchmarking:**
   * **Current State:** `Search Rows` fetches a static baseline price (`our_price`) from Google Sheets for fast mapping.
-  * **Future Roadmap:** Replace static lookup with dynamic queries to a Data Lake / Data Warehouse (e.g., BigQuery, Snowflake, or historical internal snapshot tables). 
-  * **Business Value:** Enables **Historical Price Benchmarking**—comparing real-time competitor pricing dynamics not just against today's static MSRP, but against internal historical price fluctuations, promotional campaigns, and seasonal price changes over time.
+  * **Future Roadmap:** Replace static lookup with dynamic queries to an internal Data Lake / Data Warehouse (e.g., BigQuery, Snowflake, or historical ERP/OMS snapshots).
+  * **Business Value & Strategic Decision-Making:** * Enables **Historical Price Benchmarking** - comparing real-time competitor pricing dynamics not just against today's static MSRP, but against internal price fluctuations, active marketing campaigns, and seasonal trends over time.
+    * **Inventory-Aware Pricing Strategy:** Incorporates internal operational metrics—such as **stock levels and low-stock/out-of-stock (OOS) risks**. For instance, if an internal SKU is near OOS, the system can automatically adjust price gap sensitivity, prioritizing higher profit margins over matching competitor price drops until stock is replenished.
  
 ## 🧪 Lessons for anyone building something similar
 
