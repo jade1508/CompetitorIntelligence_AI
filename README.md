@@ -9,37 +9,38 @@ This project monitors competitor pricing for refurbished electronics across mult
 ## 📐 Architecture
 
 ```
-Scenario 1 — Scraper
+Scenario 1 — Scraper Engine
 Google Sheets (competitor_urls)
-        │  Search Rows → loops once per tracked URL
-        ▼
-HTTP (ScraperAPI, render=true)
         │
-        ▼
+        ▼ Search Rows (loops once per tracked URL)
+HTTP Module (ScraperAPI, render=true)
+        │
+        ▼ Raw HTML / Embedded Script
 Text Parser (Match Pattern — regex extraction)
         │
-        ▼
-JSON (Parse JSON — variant array)
+        ▼ Extracted Variant JSON String
+JSON Module (Parse JSON — variant array)
         │
-        ▼
-Iterator (one row per product condition)
+        ▼ Array of Variants
+Iterator (one iteration per product condition)
         │
-        ▼
-Tools (Set multiple variables — normalize price fields)
+        ▼ Normalized Fields
+Tools Module (Set multiple variables)
         │
-        ▼
+        ▼ Structured Log
 Google Sheets (market_intelligence_log) — Add a Row
 
-Scenario 2 — Price Comparison & Alerting
-Google Sheets (Search Rows on source_product) → match by product + condition
+Scenario 2 — Price Comparison & Alerting Engine
+Google Sheets (Search Rows on source_product) ──► Match by Product + Condition
         │
         ▼
-Router
-   ├── Google Sheets (price_compare_log) — Add a Row (price_difference %)
-   │         │
-   │         ▼
-   │   Router → if our_price >= competitor_price → Gmail (Price Alert)
-   └── Google Sheets (Add a Row) — fallback logging
+Router Module
+   ├── Branch 1: Google Sheets (price_compare_log) — Add a Row (calculates price_difference %)
+   │      │
+   │      ▼
+   │   Router (Filter: if our_price >= competitor_price) ──► Gmail (Price Alert)
+   │
+   └── Branch 2: Google Sheets — Fallback Logging
 ```
 
 ## 🧱 Why this exists
