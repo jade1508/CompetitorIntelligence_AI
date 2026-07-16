@@ -2,7 +2,7 @@
 
 > Automated competitor price tracking and internal price benchmarking - built entirely on free-tier tools.
 
-This project monitors competitor pricing for refurbished electronics across multiple product conditions (Like New, Excellent, Very Good, Good), compares it against internal catalog prices, and automatically alerts the team when the company's price is equal to or higher than a competitor's — a real risk in a market where price is the primary purchase driver.
+This project monitors competitor pricing for refurbished electronics across multiple product conditions (Like New, Excellent, Very Good, Good), compares it against internal catalog prices, and automatically alerts the team when the company's price is equal to or higher than a competitor's - a real risk in a market where price is the primary purchase driver.
 
 > **Note on privacy**: all examples below use a placeholder domain (`buyme.com`) instead of the real target. The techniques are general-purpose; the specific competitor isn't the point.
 
