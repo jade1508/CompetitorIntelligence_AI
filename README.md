@@ -57,10 +57,10 @@ This ruled out plain HTTP requests entirely. Over the course of building this, t
 
 | Method | Result |
 |---|---|
-| Make.com `HTTP > Make a request` | Blocked - `429 Too Many Requests` / challenge page returned |
-| Google Apps Script `UrlFetchApp` | Blocked - same challenge page, confirming it's not User-Agent-based |
-| Google Sheets `IMPORTXML` | Partially worked (Google's crawler IP), but hit a **50,000-character result limit** on the product JSON blob, and became unreliable under repeated testing |
-| Google Sheets `IMPORTDATA` | Blocked - returned the same challenge/monitoring script |
+| Make.com `HTTP > Make a request` | ❌ Blocked - `429 Too Many Requests` / challenge page returned |
+| Google Apps Script `UrlFetchApp` | ❌ Blocked - same challenge page, confirming it's not User-Agent-based |
+| Google Sheets `IMPORTXML` | ⚠️ Partially worked (Google's crawler IP), but hit a **50,000-character result limit** on the product JSON blob, and became unreliable under repeated testing |
+| Google Sheets `IMPORTDATA` | ❌ Blocked - returned the same challenge/monitoring script |
 | **ScraperAPI with `render=true`** | ✅ **Works** - runs a real headless browser that solves the JS challenge before returning the rendered page |
 
 **Key takeaway**: a challenge that requires executing JavaScript cannot be defeated by changing headers or switching HTTP clients - it requires an actual browser execution environment somewhere in the pipeline. This is the architectural reason `render=true` is non-negotiable here, even though it costs significantly more API credits (~10x) than a plain request.
