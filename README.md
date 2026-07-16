@@ -50,7 +50,7 @@ Manually checking competitor prices across multiple products and conditions does
 
 This was the main technical challenge of the project, and worth documenting because it shaped every architectural decision below.
 
-The target competitor's product pages are protected by a **proof-of-work JavaScript challenge** (a "Sloth VDF" - Verifiable Delay Function — running in a Web Worker). Instead of returning the product page, the server first returns a challenge page that must be *solved by executing JavaScript in a real browser* before a valid session is granted.
+The target competitor's product pages are protected by a **proof-of-work JavaScript challenge** (a "Sloth VDF" - Verifiable Delay Function - running in a Web Worker). Instead of returning the product page, the server first returns a challenge page that must be *solved by executing JavaScript in a real browser* before a valid session is granted.
 
 This ruled out plain HTTP requests entirely. Over the course of building this, the following approaches were tested, in order:
 
