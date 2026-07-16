@@ -126,7 +126,7 @@ The current setup utilizes a fixed benchmark dataset (`source_product`) as a bas
   * **Current State:** `Search Rows` fetches a static baseline price (`our_price`) from Google Sheets for fast mapping.
   * **Future Roadmap:** Replace static lookup with dynamic queries to an internal Data Lake / Data Warehouse (e.g., BigQuery, Snowflake, or historical ERP/OMS snapshots).
   * **Business Value & Strategic Decision-Making:** * Enables **Historical Price Benchmarking** - comparing real-time competitor pricing dynamics not just against today's static MSRP, but against internal price fluctuations, active marketing campaigns, and seasonal trends over time.
-    * **Inventory-Aware Pricing Strategy:** Incorporates internal operational metrics—such as **stock levels and low-stock/out-of-stock (OOS) risks**. For instance, if an internal SKU is near OOS, the system can automatically adjust price gap sensitivity, prioritizing higher profit margins over matching competitor price drops until stock is replenished.
+    * **Inventory-Aware Pricing Strategy:** Incorporates internal operational metrics - such as **stock levels and low-stock/out-of-stock (OOS) risks**. For instance, if an internal SKU is near OOS, the system can automatically adjust price gap sensitivity, prioritizing higher profit margins over matching competitor price drops until stock is replenished.
  
 ## 🧪 Lessons for anyone building something similar
 
