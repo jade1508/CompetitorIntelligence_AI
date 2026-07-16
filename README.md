@@ -56,18 +56,18 @@ This ruled out plain HTTP requests entirely. Over the course of building this, t
 
 | Method | Result |
 |---|---|
-| Make.com `HTTP > Make a request` | Blocked — `429 Too Many Requests` / challenge page returned |
-| Google Apps Script `UrlFetchApp` | Blocked — same challenge page, confirming it's not User-Agent-based |
+| Make.com `HTTP > Make a request` | Blocked - `429 Too Many Requests` / challenge page returned |
+| Google Apps Script `UrlFetchApp` | Blocked - same challenge page, confirming it's not User-Agent-based |
 | Google Sheets `IMPORTXML` | Partially worked (Google's crawler IP), but hit a **50,000-character result limit** on the product JSON blob, and became unreliable under repeated testing |
-| Google Sheets `IMPORTDATA` | Blocked — returned the same challenge/monitoring script |
-| **ScraperAPI with `render=true`** | ✅ **Works** — runs a real headless browser that solves the JS challenge before returning the rendered page |
+| Google Sheets `IMPORTDATA` | Blocked - returned the same challenge/monitoring script |
+| **ScraperAPI with `render=true`** | ✅ **Works** - runs a real headless browser that solves the JS challenge before returning the rendered page |
 
 **Key takeaway**: a challenge that requires executing JavaScript cannot be defeated by changing headers or switching HTTP clients - it requires an actual browser execution environment somewhere in the pipeline. This is the architectural reason `render=true` is non-negotiable here, even though it costs significantly more API credits (~10x) than a plain request.
 
 ## 🛠️ Scraping setup (ScraperAPI)
 
 1. Sign up at [scraperapi.com](https://www.scraperapi.com) and grab your API key from the dashboard.
-2. Free trial credits are one-time (not monthly), and `render=true` requests consume roughly **10x** the credits of a standard request — budget accordingly (a few thousand renders is enough to build and validate a pipeline, not to run it continuously forever).
+2. Free trial credits are one-time (not monthly), and `render=true` requests consume roughly **10x** the credits of a standard request - budget accordingly (a few thousand renders is enough to build and validate a pipeline, not to run it continuously forever).
 3. Request format:
    ```
    https://api.scraperapi.com/?api_key=YOUR_KEY&url=<encoded_target_url>&render=true
@@ -77,7 +77,7 @@ This ruled out plain HTTP requests entirely. Over the course of building this, t
    https://api.scraperapi.com/?api_key=YOUR_KEY&url={{urlencode(2.target_url)}}&render=true
    ```
 5. Increase the HTTP module's timeout to 60–90 seconds - rendered requests take significantly longer than plain HTTP calls (5–15s+) because the headless browser has to load and solve the challenge first.
-6. Set `Parse response` to **No** — the response is HTML, not JSON, at this stage.
+6. Set `Parse response` to **No** - the response is HTML, not JSON, at this stage.
 
 ## 🔍 Extracting the pricing data
 
@@ -87,7 +87,7 @@ The product's variant data (price, stock quantity, condition) is embedded as JSO
 "variants":(\[[^\]]*\]),"has_variant_in_stock":(true|false)
 ```
 
-The extracted array is then parsed with a `JSON > Parse JSON` module and iterated to produce one row per product condition (e.g. label `A0`–`A4` mapping to Like New / Excellent / Very Good / Good / Heavily Used), each carrying its own price and stock quantity — `quantity > 0` is used as the reliable in-stock signal, rather than relying on UI text.
+The extracted array is then parsed with a `JSON > Parse JSON` module and iterated to produce one row per product condition (e.g. label `A0`–`A4` mapping to Like New / Excellent / Very Good / Good / Heavily Used), each carrying its own price and stock quantity - `quantity > 0` is used as the reliable in-stock signal, rather than relying on UI text.
 
 ## ⚠️ A note on regex robustness
 
@@ -101,13 +101,6 @@ Connected directly to the Google Sheets logs, with four views:
 - **Competitor Overview** - raw scrape log: stock quantity, availability, condition, price drop flags
 - **Alert Log** - record of every price-alert email triggered, for tracking how often the team was notified
 
-## 🧪 Lessons for anyone building something similar
-
-- Test anti-bot behavior *before* designing the rest of the pipeline — it changes which tools are even viable.
-- Different Google services (`IMPORTXML`, `IMPORTDATA`, Apps Script `UrlFetchApp`) run on different underlying IP ranges and are **not interchangeable** for bypass purposes, even though they're all "Google."
-- In Make, arithmetic must be written as a single expression inside one variable reference - chaining separate variable pills with an operator typed in between concatenates them as text instead of calculating. Always resolve the full expression as one unit, not as two separate references joined by a typed operator.
-- Repeated testing against a rate-limited endpoint compounds the problem - space out test runs, and expect to occasionally wait out a temporary IP flag rather than debug further.
-
 ## 📊 Data Source
 
 [Link to the dataset and worksheet](https://docs.google.com/spreadsheets/d/1xodmOzqchXXoG1g2VBcTHJbF5DQbZohrFqMortnskeQ/edit?usp=sharing) 
@@ -120,6 +113,22 @@ Connected directly to the Google Sheets logs, with four views:
 4. Connect Gmail (or swap for Slack/Telegram) for the alert step.
 5. Connect the Google Sheets logs to a new Looker Studio report for the dashboard.
 6. Start with `Run once` to validate each step before enabling a schedule.
+
+## 🚀 System Architecture & Scalability Roadmap
+
+The current setup utilizes a fixed benchmark dataset (`source_product`) as a baseline for price matching and gap detection. To further scale this intelligence pipeline into an enterprise-grade solution, the architecture is designed to support the following enhancements:
+
+* **Data Lake Integration for Historical Pricing:**
+  * **Current State:** `Search Rows` fetches a static baseline price (`our_price`) from Google Sheets for fast mapping.
+  * **Future Roadmap:** Replace static lookup with dynamic queries to a Data Lake / Data Warehouse (e.g., BigQuery, Snowflake, or historical internal snapshot tables). 
+  * **Business Value:** Enables **Historical Price Benchmarking**—comparing real-time competitor pricing dynamics not just against today's static MSRP, but against internal historical price fluctuations, promotional campaigns, and seasonal price changes over time.
+ 
+## 🧪 Lessons for anyone building something similar
+
+- Test anti-bot behavior *before* designing the rest of the pipeline — it changes which tools are even viable.
+- Different Google services (`IMPORTXML`, `IMPORTDATA`, Apps Script `UrlFetchApp`) run on different underlying IP ranges and are **not interchangeable** for bypass purposes, even though they're all "Google."
+- In Make, arithmetic must be written as a single expression inside one variable reference - chaining separate variable pills with an operator typed in between concatenates them as text instead of calculating. Always resolve the full expression as one unit, not as two separate references joined by a typed operator.
+- Repeated testing against a rate-limited endpoint compounds the problem - space out test runs, and expect to occasionally wait out a temporary IP flag rather than debug further.
 
 ## 🙏 Disclosure
 
