@@ -96,7 +96,7 @@ Extracting from an embedded JSON blob via regex is inherently fragile - if the c
 
 ## 📊 Dashboard (Looker Studio)
 
-[Link to the dataset and worksheet](https://datastudio.google.com/reporting/a0bf5353-5231-42dd-8d29-0b610962bb76) 
+[Link to Competitor Intelligence Dashboard](https://datastudio.google.com/reporting/a0bf5353-5231-42dd-8d29-0b610962bb76) 
 
 Connected directly to the Google Sheets logs, with four views:
 - **Competitor Price Trend** - line chart of competitor pricing over time, filterable by product/condition
