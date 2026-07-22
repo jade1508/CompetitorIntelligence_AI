@@ -104,7 +104,7 @@ Connected directly to the Google Sheets logs, with four views:
 - **Competitor Overview** - raw scrape log: stock quantity, availability, condition, price drop flags
 - **Alert Log** - record of every price-alert email triggered, for tracking how often the team was notified
 
-<img width="1754" height="478" alt="image" src="https://github.com/user-attachments/assets/ccf73b79-c287-4a53-b23e-5eb525e76508" />
+<img width="1740" height="486" alt="image" src="https://github.com/user-attachments/assets/2d30dc05-60f3-4482-b981-80a2c70351dd" />
 
 <img width="961" height="841" alt="image" src="https://github.com/user-attachments/assets/66850b6d-7024-4551-8c6a-484524423b35" />
 
