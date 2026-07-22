@@ -114,7 +114,7 @@ Connected directly to the Google Sheets logs, with four views:
 
 ## 📺 Video Walkthrough
 
-Full step-by-step technical walkthrough (data mapping, workflow, dashboard): **https://youtu.be/X_KmyjxA4VQ](https://youtu.be/gloadt_NSrI**
+Full step-by-step technical walkthrough (data mapping, workflow, dashboard): https://youtu.be/X_KmyjxA4VQ](https://youtu.be/gloadt_NSrI
 
 ## ⚙️ Setup
 
