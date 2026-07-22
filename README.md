@@ -112,6 +112,10 @@ Connected directly to the Google Sheets logs, with four views:
 
 [Link to the dataset and worksheet](https://docs.google.com/spreadsheets/d/1xodmOzqchXXoG1g2VBcTHJbF5DQbZohrFqMortnskeQ/edit?usp=sharing) 
 
+## 📺 Video Walkthrough
+
+Full step-by-step technical walkthrough (data mapping, workflow, dashboard): **https://youtu.be/X_KmyjxA4VQ](https://youtu.be/gloadt_NSrI**
+
 ## ⚙️ Setup
 
 1. Import both Make scenarios (Scraper + Price Comparison).
@@ -141,10 +145,6 @@ The current setup utilizes a fixed benchmark dataset (`source_product`) as a bas
 ## 🙏 Disclosure
 
 This was built as a hands-on learning project with the help of AI assistants (Gemini, Claude) - not written from scratch solo. Sharing it as-is, warts and debugging detours included, because that's a more honest picture of how this kind of build actually goes.
-
-## 📺 Video Walkthrough
-
-Full step-by-step technical walkthrough (data mapping, workflow, dashboard): **https://youtu.be/X_KmyjxA4VQ](https://youtu.be/gloadt_NSrI**
 
 ## 🏷️ Tags
 
