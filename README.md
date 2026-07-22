@@ -106,8 +106,7 @@ Connected directly to the Google Sheets logs, with four views:
 
 <img width="1740" height="486" alt="image" src="https://github.com/user-attachments/assets/2d30dc05-60f3-4482-b981-80a2c70351dd" />
 
-<img width="961" height="841" alt="image" src="https://github.com/user-attachments/assets/66850b6d-7024-4551-8c6a-484524423b35" />
-
+<img width="964" height="843" alt="AICompetitorIntelligence" src="https://github.com/user-attachments/assets/857c9353-5831-40f8-ba32-d3c389a1b7da" />
 
 ## 📊 Data Source
 
@@ -142,6 +141,10 @@ The current setup utilizes a fixed benchmark dataset (`source_product`) as a bas
 ## 🙏 Disclosure
 
 This was built as a hands-on learning project with the help of AI assistants (Gemini, Claude) - not written from scratch solo. Sharing it as-is, warts and debugging detours included, because that's a more honest picture of how this kind of build actually goes.
+
+## 📺 Video Walkthrough
+
+Full step-by-step technical walkthrough (data mapping, workflow, dashboard): **https://youtu.be/X_KmyjxA4VQ](https://youtu.be/gloadt_NSrI**
 
 ## 🏷️ Tags
 
