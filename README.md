@@ -106,7 +106,7 @@ Connected directly to the Google Sheets logs, with four views:
 
 <img width="1740" height="486" alt="image" src="https://github.com/user-attachments/assets/2d30dc05-60f3-4482-b981-80a2c70351dd" />
 
-<img width="964" height="843" alt="AICompetitorIntelligence" src="https://github.com/user-attachments/assets/857c9353-5831-40f8-ba32-d3c389a1b7da" />
+<img width="960" height="842" alt="image" src="https://github.com/user-attachments/assets/63b8b59a-f3c8-46a0-a35d-c0b1b096b39f" />
 
 ## 📊 Data Source
 
