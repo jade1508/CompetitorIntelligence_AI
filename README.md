@@ -112,10 +112,6 @@ Connected directly to the Google Sheets logs, with four views:
 
 [Link to the dataset and worksheet](https://docs.google.com/spreadsheets/d/1xodmOzqchXXoG1g2VBcTHJbF5DQbZohrFqMortnskeQ/edit?usp=sharing) 
 
-## 📺 Video Walkthrough
-
-Full step-by-step technical walkthrough (data mapping, workflow, dashboard): [YouTube video](https://youtu.be/7cTwuDilc30)
-
 ## ⚙️ Setup
 
 1. Import both Make scenarios (Scraper + Price Comparison).
